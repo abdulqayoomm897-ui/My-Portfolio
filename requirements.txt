@@ -1,0 +1,180 @@
+AI-Powered Modern Portfolio Website (Abdul Qayoom Mangi)
+1. 📌 Introduction
+1.1 Purpose
+
+The purpose of this system is to develop a fully functional, modern, and animated portfolio website for Abdul Qayoom Mangi, an AI & Data Science enthusiast and Software Engineering student.
+
+The platform will dynamically present skills, projects, experience, and services using modern frameworks and backend integration to support career opportunities such as AI internships and freelance work.
+
+1.2 Scope
+
+The system will:
+
+Showcase AI/ML projects (CNN, OpenCV, Data Analysis, etc.)
+Display dynamic data fetched from backend (resume-based content)
+Provide interactive UI with animations
+Offer contact functionality
+Highlight services including:
+AI Solutions
+Mobile App Development (updated)
+Data Analysis
+Be deployed online using modern platforms
+1.3 Definitions & Acronyms
+Term	Meaning
+SPA	Single Page Application
+SSR	Server-Side Rendering
+AI	Artificial Intelligence
+ML	Machine Learning
+CNN	Convolutional Neural Network
+API	Application Programming Interface
+1.4 Overview
+
+This document describes system architecture, features, functional and non-functional requirements, and future enhancements.
+
+2. 🧠 Overall Description
+2.1 Product Perspective
+
+The system is a modern full-stack web application built using:
+
+Frontend: React + Next.js
+Styling: Tailwind CSS
+Animations: Framer Motion
+Backend: Node.js / API routes (Next.js)
+Deployment: Vercel
+2.2 Product Functions
+Dynamic content rendering from backend
+Animated UI interactions
+Responsive design (mobile-first)
+Project showcase
+Contact form with backend integration
+Resume-based data display
+2.3 User Classes
+User	Description
+Recruiters	Evaluate skills & experience
+Clients	Explore services
+Students	Learn from projects
+2.4 Constraints
+Requires internet access
+Must support modern browsers
+Backend API required for dynamic content
+Performance optimization required
+2.5 Assumptions
+Resume data is structured in backend (JSON/DB)
+Hosting on Vercel
+Users access via browser
+3. ⚙️ Functional Requirements
+3.1 Navigation System
+Smooth scrolling between sections
+Sticky navbar
+Mobile responsive menu
+3.2 Hero Section
+Features:
+Animated introduction
+Gradient text
+Call-to-action buttons
+Role display (AI Enthusiast, Student)
+3.3 About Section
+Requirements:
+Display career objective
+Education:
+MUET (Software Engineering)
+SMIT Hyderabad (AI Program)
+Experience summary
+3.4 Skills Section
+Requirements:
+Fetch skills dynamically from backend
+Categorize:
+Programming: Python, Java, C++, MySQL
+AI/ML: TensorFlow, OpenCV, Scikit-learn
+Animated skill cards
+3.5 Projects Section
+Requirements:
+Dynamic rendering from backend
+Each project includes:
+Title
+Description
+Tech stack
+Projects:
+CNN Image Classification Model
+OpenCV Image Processing Suite
+Heart Disease Prediction
+E-Commerce Data Analysis
+3.6 Services Section
+Updated Services:
+AI Solutions
+Mobile App Development (replacing web dev)
+Data Analysis
+3.7 Contact System
+Requirements:
+Form inputs (Name, Email, Message)
+Backend API to handle submissions
+Email integration (future)
+3.8 Animation System
+Requirements:
+Page transitions (Framer Motion)
+Scroll animations
+Hover effects
+Loading animations
+3.9 Backend System
+Features:
+API routes (Next.js)
+Serve resume data (JSON)
+Handle contact form
+4. 🎨 Non-Functional Requirements
+4.1 Performance
+Load time < 2 seconds
+Optimized images & assets
+4.2 Usability
+Clean UI/UX
+Easy navigation
+Attractive design
+4.3 Responsiveness
+Mobile-first design
+Tablet & desktop compatibility
+4.4 Security
+Input validation
+Protection against spam
+4.5 Maintainability
+Modular React components
+Clean code structure
+4.6 Scalability
+Easy upgrade to:
+CMS
+Database (MongoDB)
+Admin dashboard
+5. 🏗️ System Architecture
+5.1 Architecture Type
+Full Stack Web Application
+5.2 Architecture Diagram (Text)
+Frontend (React + Next.js)
+        ↓
+API Layer (Next.js API Routes)
+        ↓
+Data Source (Resume JSON / Database)
+
+6. 🖥️ UI/UX Design
+Features:
+Dark theme
+Gradient typography
+Glassmorphism cards
+Smooth animations
+Modern layout
+7. 📊 Use Cases
+Actor: User
+View Portfolio
+Navigate Sections
+View Projects
+Submit Contact Form
+8. 🚀 Deployment
+Vercel (recommended)
+GitHub integration
+Continuous deployment
+9. 🔮 Future Enhancements
+Blog system
+Resume download
+GitHub API integration
+AI chatbot (LLaMA-based)
+Admin panel
+10. ✅ Conclusion
+
+This system will provide a modern, dynamic, and professional portfolio platform that reflects Abdul Qayoom Mangi’s expertise in AI, Machine Learning, and software development, helping attract recruiters and clients through an engaging and interactive experience.

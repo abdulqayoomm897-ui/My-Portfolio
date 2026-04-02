@@ -1,0 +1,64 @@
+{
+  "name": "Abdul Qayoom Mangi",
+  "title": "AI and Data scientist | Software Engineer",
+  "email": "abdulqayoomm897@gmail.com",
+  "phone": "+92 310 3250815",
+  "github": "https://github.com/abdulqayoomm897-ui",
+  "linkedin": "https://www.linkedin.com/in/abdulqayoommangi",
+  "location": "Hyderabad, Pakistan",
+  "bio": "I am a passionate learner and aspiring professional with a strong interest in Data Science and Artificial Intelligence. I enjoy exploring how data can be transformed into meaningful insights and how AI can solve real-world problems. I am continuously building my skills in programming, data analysis, and modern AI technologies to grow as a future AI Engineer.",
+  "education": [
+    {
+      "degree": "Bachelor of Engineering",
+      "field": "Software Engineering",
+      "institution": "MUET (Mehran University of Engineering & Technology)",
+      "year": "2024-2028",
+      "gpa": "3.8/4.0"
+    },
+    {
+      "degree": "AI and Data science Course",
+      "field": "Artificial Intelligence & Data Science",
+      "institution": "SMIT (Saylani Mass IT Trainings)",
+      "year": "2025-26",
+      "description": "1-year comprehensive AI and Data Science program covering Deep Learning, Machine Learning, and Data Analytics"
+    },
+    {
+      "degree": "Python Developer Course",
+      "field": "Python Development",
+      "institution": "PITP - MUET",
+      "year": "2024 (2 months)",
+      "description": "Focused training on Python programming and development skills"
+    }
+  ],
+  "skills": {
+    "programming": [
+      { "name": "Python", "level": "Expert" },
+      { "name": "Java", "level": "Intermediate" },
+      { "name": "C++", "level": "Intermediate" },
+      { "name": "SQL", "level": "Expert" }
+    ],
+    "aiml": [
+      { "name": "Machine Learning", "level": "Advanced" },
+      { "name": "Data Analysis", "level": "Advanced" },
+      { "name": "TensorFlow", "level": "Advanced" },
+      { "name": "OpenCV", "level": "Advanced" },
+      { "name": "Scikit-learn", "level": "Intermediate" }
+    ],
+    "tools": [
+      "Jupyter Notebook",
+      "Pandas",
+      "NumPy",
+      "Matplotlib",
+      "Git/GitHub",
+      "VS Code"
+    ]
+  },
+  "experience": [
+    {
+      "title": "AI Intern",
+      "company": "SMIT Hyderabad",
+      "duration": "2024-Present",
+      "description": "Building ML models, Computer Vision applications, and data analysis projects"
+    }
+  ]
+}

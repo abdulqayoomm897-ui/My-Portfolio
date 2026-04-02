@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "title": "Finance Literacy App",
+    "description": "Developed a mobile app for budgeting, expense tracking, and financial insights, integrating a chatbot powered by Llama 3 for personalized financial guidance.",
+    "image": "/FInance_app_img.png",
+    "tech": ["Java", "XML", "Llama 3", "AI Chatbot"],
+    "link": "#",
+    "github": "https://gitlab.com/kf_rahujo-group/kf_rahujo-project"
+  },
+  {
+    "id": 2,
+    "title": "CNN Image Classification Model",
+    "description": "A deep learning model for multi-class image classification using Convolutional Neural Networks trained on custom dataset.",
+    "image": "/CNN_IMG.jpeg",
+    "tech": ["TensorFlow", "Python", "CNN", "Jupyter"],
+    "link": "#",
+    "github": "https://github.com/abdulqayoomm897-ui/Image-classification-using-CNN/blob/main/Untitled.ipynb"
+  },
+  {
+    "id": 4,
+    "title": "Heart Disease Prediction System",
+    "description": "ML classification model predicting heart disease risk using logistic regression and feature engineering on medical datasets.",
+    "image": "/CVD_IMG.jpg",
+    "tech": ["Scikit-learn", "Python", "Data Analytics", "ML"],
+    "link": "#",
+    "github": "#"
+  },
+  {
+    "id": 5,
+    "title": "E-Commerce Data Analysis",
+    "description": "Comprehensive analysis of e-commerce dataset providing business insights, sales trends, and customer behavior patterns using Python.",
+    "image": "/ECOM_IMG.jpeg",
+    "tech": ["Pandas", "Matplotlib", "Python", "Data Science"],
+    "link": "#",
+    "github": "https://github.com/abdulqayoomm897-ui/E-Commerce-store-data-analysis"
+  },
+  {
+    "id": 6,
+    "title": "Student Management System",
+    "description": "A Python-based application for managing student records, including enrollment, grades, attendance, and report generation.",
+    "image": "/STM.png",
+    "tech": ["Python", "SQLite", "Tkinter", "Data Management"],
+    "link": "#",
+    "github": "https://github.com/abdulqayoomm897-ui/Student---Course-Managment-System-PITP-weekly-miniproject"
+  }
+]
