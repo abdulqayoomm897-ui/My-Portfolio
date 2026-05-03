@@ -1,12 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
-import emailjs from '@emailjs/browser';
 import Toast from './Toast';
-
-// Initialize EmailJS
-if (typeof window !== 'undefined') {
-  emailjs.init(process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || '');
-}
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -34,37 +28,27 @@ export default function Contact() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    // Validate EmailJS credentials
-    if (!process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || 
-        !process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID ||
-        !process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY) {
-      showToast('Email service is not configured. Please contact the site administrator.', 'error');
-      return;
-    }
-
     setLoading(true);
 
     try {
-      const result = await emailjs.send(
-        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
-        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
-        {
-          from_name: formData.name,
-          from_email: formData.email,
-          message: formData.message,
-          to_email: process.env.RECIPIENT_EMAIL
-        },
-        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
-      );
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      });
 
-      if (result.status === 200) {
-        showToast('🎉 Message sent successfully! I will get back to you soon.', 'success');
-        setFormData({ name: '', email: '', message: '' });
+      const data = await response.json().catch(() => ({}));
+
+      if (!response.ok) {
+        showToast(data.error || 'Something went wrong. Please try again.', 'error');
+        return;
       }
+
+      showToast('Message sent successfully. I will get back to you soon.', 'success');
+      setFormData({ name: '', email: '', message: '' });
     } catch (error) {
-      console.error('Email error:', error);
-      showToast('❌ Error sending message. Please try again.', 'error');
+      console.error('Contact error:', error);
+      showToast('Could not send your message. Please try again.', 'error');
     } finally {
       setLoading(false);
     }
