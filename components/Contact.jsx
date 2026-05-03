@@ -1,6 +1,12 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import emailjs from '@emailjs/browser';
+import Toast from './Toast';
+
+// Initialize EmailJS
+if (typeof window !== 'undefined') {
+  emailjs.init(process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || '');
+}
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -8,7 +14,7 @@ export default function Contact() {
     email: '',
     message: ''
   });
-  const [status, setStatus] = useState('');
+  const [toast, setToast] = useState({ message: '', type: 'success', isVisible: false });
   const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
@@ -19,30 +25,46 @@ export default function Contact() {
     }));
   };
 
+  const showToast = (message, type = 'success') => {
+    setToast({ message, type, isVisible: true });
+    setTimeout(() => {
+      setToast(prev => ({ ...prev, isVisible: false }));
+    }, 5000);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    // Validate EmailJS credentials
+    if (!process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || 
+        !process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID ||
+        !process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY) {
+      showToast('Email service is not configured. Please contact the site administrator.', 'error');
+      return;
+    }
+
     setLoading(true);
-    setStatus('');
 
     try {
-      // EmailJS configuration - Replace with your actual IDs from EmailJS dashboard
-      const serviceId = 'your_service_id';
-      const templateId = 'your_template_id';
-      const publicKey = 'your_public_key';
+      const result = await emailjs.send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          message: formData.message,
+          to_email: process.env.RECIPIENT_EMAIL
+        },
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
+      );
 
-      await emailjs.send(serviceId, templateId, {
-        from_name: formData.name,
-        from_email: formData.email,
-        message: formData.message,
-        to_email: 'abdulqayoomm897@gmail.com'
-      }, publicKey);
-
-      setStatus('Message sent successfully! I will get back to you soon.');
-      setFormData({ name: '', email: '', message: '' });
-      setTimeout(() => setStatus(''), 5000);
+      if (result.status === 200) {
+        showToast('🎉 Message sent successfully! I will get back to you soon.', 'success');
+        setFormData({ name: '', email: '', message: '' });
+      }
     } catch (error) {
-      console.error('EmailJS error:', error);
-      setStatus('Error sending message. Please try again.');
+      console.error('Email error:', error);
+      showToast('❌ Error sending message. Please try again.', 'error');
     } finally {
       setLoading(false);
     }
@@ -104,22 +126,29 @@ export default function Contact() {
               className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-emerald-400 transition"
             />
             
-            {status && (
-              <p className={`text-center py-2 rounded ${status.includes('successfully') ? 'bg-emerald-500/20 text-emerald-400' : 'bg-red-500/20 text-red-400'}`}>
-                {status}
-              </p>
-            )}
-
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-emerald-500 hover:bg-emerald-600 disabled:bg-gray-600 text-black font-bold py-3 rounded-lg transition"
+              className="w-full bg-emerald-500 hover:bg-emerald-600 disabled:bg-gray-600 text-black font-bold py-3 rounded-lg transition transform hover:scale-105 active:scale-95"
             >
-              {loading ? 'Sending...' : 'Send Message'}
+              {loading ? (
+                <span className="flex items-center justify-center gap-2">
+                  <span className="inline-block w-4 h-4 border-2 border-black border-t-transparent rounded-full animate-spin"></span>
+                  Sending...
+                </span>
+              ) : (
+                'Send Message'
+              )}
             </button>
           </form>
         </motion.div>
       </div>
+      
+      <Toast 
+        message={toast.message} 
+        type={toast.type} 
+        isVisible={toast.isVisible}
+      />
     </section>
   );
 }
